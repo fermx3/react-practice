@@ -1,13 +1,96 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --ligth-gray: #d6d6d6;
+  --dark-gray: #333533;
+  --dark-color: #202020;
+  --ligth-color: #f0f0f0;
+  --delete-btn: #e63946;
+  --btn-hover: #e9505b;
+  --alt-btn-hover: #fdeeef;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 3rem;
+  background-color: var(--dark-color);
+}
+
+h1,
+h2 {
+  color: var(--ligth-color);
+  margin-top: 0;
+}
+
+.btn {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: var(--delete-btn);
+  color: var(--ligth-color);
+  border: 1px solid var(--delete-btn);
+  margin: 0 1rem;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+  border-color: var(--btn-hover);
+}
+
+.btn--alt {
+  background-color: transparent;
+  color: var(--delete-btn);
+}
+
+.btn--alt:hover {
+  background-color: var(--alt-btn-hover);
+}
+
+.todos-container {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  row-gap: 2rem; */
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: var(--dark-color);
+  border: solid var(--dark-gray) 1px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 20rem;
+}
+
+.actions {
+  text-align: right;
+}
+
+.modal {
+  color: var(--ligth-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: var(--dark-gray);
+  padding: 1rem;
+  text-align: center;
+  width: 30rem;
+  z-index: 10;
+  position: fixed;
+  top: 20vh;
+  left: calc(50% - 15rem);
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
 }
