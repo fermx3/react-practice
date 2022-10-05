@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Link, Outlet } from "react-router-dom";
+import Layout from "../../components/layout/Layout/Layout";
 
 import classes from "./Navigation.module.css";
 
@@ -22,7 +23,9 @@ const Navigation = () => {
           </ul>
         </div>
       </header>
-      <Outlet />
+      <Layout>
+        <Outlet />
+      </Layout>
     </Fragment>
   );
 };
