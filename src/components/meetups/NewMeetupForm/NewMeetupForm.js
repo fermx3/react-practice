@@ -6,7 +6,7 @@ import classes from "./NewMeetupForm.module.css";
 
 const { form, control, actions } = classes;
 
-const NewMeetupForm = () => {
+const NewMeetupForm = (props) => {
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -15,17 +15,18 @@ const NewMeetupForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     const title = titleInputRef.current.value;
-    const image = imageInputRef.current.value;
+    const imgUrl = imageInputRef.current.value;
     const address = addressInputRef.current.value;
     const description = descInputRef.current.value;
 
     const meetupData = {
       title,
-      image,
+      imgUrl,
       address,
       description,
     };
-    console.log(meetupData);
+
+    props.onAddMeetup(meetupData);
   };
 
   return (

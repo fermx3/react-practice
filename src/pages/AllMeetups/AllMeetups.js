@@ -1,29 +1,45 @@
-import MeetupList from "../../components/meetups/MeetupList/MeetupList";
+import { useState, useEffect } from "react";
 
-const DUMMY_DATA = [
-  {
-    id: "m1",
-    title: "This is a first meetup",
-    imgUrl: "https://picsum.photos/700/500?random=1",
-    address: "Meetupstreet 5, 12345 Meetup City",
-    description:
-      "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
-  },
-  {
-    id: "m2",
-    title: "This is a second meetup",
-    imgUrl: "https://picsum.photos/700/500?random=2",
-    address: "Meetupstreet 5, 12345 Meetup City",
-    description:
-      "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
-  },
-];
+import MeetupList from "../../components/meetups/MeetupList/MeetupList";
+import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 
 const AllMeetups = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedMeetups, setLoadedMeetups] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch("https://react-test-2d525-default-rtdb.firebaseio.com/meetups.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const meetups = [];
+
+        for (const key in data) {
+          const meetup = {
+            id: key,
+            ...data[key],
+          };
+
+          meetups.unshift(meetup);
+        }
+
+        setIsLoading(false);
+        setLoadedMeetups(meetups);
+      });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section>
+        <LoadingSpinner />
+      </section>
+    );
+  }
+
   return (
     <section>
       <h1>All Meetups</h1>
-      <MeetupList entries={DUMMY_DATA} />
+      <MeetupList entries={loadedMeetups} />
     </section>
   );
 };
