@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-import NewMeetupForm from "../components/meetups/NewMeetupForm/NewMeetupForm";
+import NewMeetupForm from "../../components/meetups/NewMeetupForm/NewMeetupForm";
+
+import classes from './NewMeetup.module.css'
 
 const NewMeetup = () => {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ const NewMeetup = () => {
 
   return (
     <section>
-      <h1>Add New Meetup</h1>
+      <h1 className={classes.centeredTitle}>Add New Meetup</h1>
       <NewMeetupForm onAddMeetup={addMeetupHandler} />
     </section>
   );

@@ -8,7 +8,7 @@ const MeetupItem = ({ entry }) => {
   const { imgUrl, title, address, description } = entry;
 
   return (
-    <li className={item}>
+    <div className={item}>
       <Card>
         <div className={image}>
           <img src={imgUrl} alt={title} />
@@ -22,7 +22,7 @@ const MeetupItem = ({ entry }) => {
           <button>To Favorites</button>
         </div>
       </Card>
-    </li>
+    </div>
   );
 };
 
