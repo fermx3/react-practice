@@ -39,7 +39,7 @@ const AllMeetups = () => {
   return (
     <section>
       <h1>All Meetups</h1>
-      <MeetupList entries={loadedMeetups} />
+      <MeetupList meetups={loadedMeetups} />
     </section>
   );
 };
