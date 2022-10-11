@@ -8,15 +8,15 @@ import classes from "./MeetupItem.module.css";
 const { item, image, content, actions } = classes;
 
 const MeetupItem = ({ meetup }) => {
-  const { itemIsFavorite, removeFavorite, addFavorite } =
+  const { removeFavorite, addFavorite } =
     useContext(FavoritesContext);
-  const isFavorite = itemIsFavorite(meetup.id);
+  // const isFavorite = itemIsFavorite(meetup.id);
 
   const toggleFavoriteStatusHandler = () => {
-    if (isFavorite) {
+    if (meetup.favorite) {
       removeFavorite(meetup.id);
     } else {
-      addFavorite(meetup);
+      addFavorite(meetup.id);
     }
   };
 
@@ -35,7 +35,7 @@ const MeetupItem = ({ meetup }) => {
         </div>
         <div className={actions}>
           <button onClick={toggleFavoriteStatusHandler}>
-            {isFavorite ? "Remove Favorite" : "To Favorites"}
+            {meetup.favorite ? "Remove Favorite" : "To Favorites"}
           </button>
         </div>
       </Card>

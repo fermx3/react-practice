@@ -24,6 +24,7 @@ const NewMeetupForm = (props) => {
       imgUrl,
       address,
       description,
+      favorite: false,
     };
 
     props.onAddMeetup(meetupData);

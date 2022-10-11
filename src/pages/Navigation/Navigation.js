@@ -7,9 +7,9 @@ import FavoritesContext from "../../store/favorites-context";
 import classes from "./Navigation.module.css";
 
 const Navigation = () => {
-  const { totalFavorites } = useContext(FavoritesContext);
+  const { favorites } = useContext(FavoritesContext);
 
-  const {header, logo, badge} = classes;
+  const { header, logo, badge } = classes;
 
   return (
     <Fragment>
@@ -25,7 +25,8 @@ const Navigation = () => {
             </li>
             <li>
               <Link to="/favorites">
-                My Favorites<span className={badge}>{totalFavorites}</span>
+                My Favorites
+                <span className={badge}>{favorites && favorites.length}</span>
               </Link>
             </li>
           </ul>
